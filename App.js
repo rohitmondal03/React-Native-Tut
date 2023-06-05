@@ -1,24 +1,24 @@
 import React from "react";
-import { View, Text, SafeAreaView, StatusBar } from "react-native";
+import { View, StyleSheet } from "react-native";
+
+import CurrentWeather from "./src/components/CurrentWeather";
+import UpcomingWeather from "./src/components/UpcomingWeather";
+
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <View>
-        <Text style={{fontSize: 20, textAlign: 'center'}}>Weather</Text>
-      </View>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <UpcomingWeather />
+    </View>
   )
 }
 
-const styles = {
+const styles= StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight + 10,
-    marginLeft: 'auto',
-    marginRight: 'auto'
-  },    
-}
+  }
+})
 
 
-export default App;
+
+export default App
