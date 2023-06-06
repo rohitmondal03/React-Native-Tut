@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, SafeAreaView, StyleSheet, Text, StatusBar, FlatList } from 'react-native';
+import { View, SafeAreaView, StyleSheet, Text, StatusBar, FlatList, ImageBackground } from 'react-native';
 import { Feather } from "@expo/vector-icons"
 
 
@@ -79,22 +79,33 @@ const UpcomingWeather = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ color: 'white' }}>Upcoming Weather</Text>
+      <ImageBackground
+        source={require('../../assets/upcoming-bg.jpg')}
+        style={styles.image}
+      >
+      <Text style={styles.heading}>Upcoming Weather</Text>
       <FlatList
         data={DATA}
         renderItem={renderItem}
         keyExtractor={(item => item.dt_txt)}
       />
+      </ImageBackground>
     </SafeAreaView>
   )
 }
 
 
 const styles = StyleSheet.create({
+  heading: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 30,
+    marginVertical: 30
+  },
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight + 20 || 0,
-    backgroundColor: 'red',
+    marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: 'royalBlue',
 
   },
   item: {
@@ -104,7 +115,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    borderWidth: 5,
+    borderWidth: 3,
     backgroundColor: 'pink'
   },
   temp: {
@@ -116,6 +127,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: 'white',
     marginHorizontal: 5
+  },
+  image: {
+    flex: 1,
   }
 })
 
