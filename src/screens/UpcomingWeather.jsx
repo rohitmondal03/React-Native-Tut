@@ -1,6 +1,8 @@
 import React from 'react'
-import { View, SafeAreaView, StyleSheet, Text, StatusBar, FlatList, ImageBackground } from 'react-native';
-import { Feather } from "@expo/vector-icons"
+import { SafeAreaView, StyleSheet, Text, StatusBar, FlatList, ImageBackground } from 'react-native';
+
+
+import ListItem from '../components/ListItem';
 
 
 const DATA = [
@@ -46,30 +48,10 @@ const DATA = [
 
 
 
-const Item = (props) => {
-  const { dt_txt, min, max, condition } = props;
-
-  return (
-    <View style={styles.item}>
-      <Feather
-        name='sun'
-        size={50}
-        color={'white'}
-      />
-      <Text style={styles.date}>{dt_txt}</Text>
-      <Text style={styles.temp}>{min}</Text>
-      <Text style={styles.temp}>{max}</Text>
-    </View>
-  )
-}
-
-
-
-
 const UpcomingWeather = () => {
 
   const renderItem = ({ item }) => (
-    <Item
+    <ListItem
       condition={item.weather[0].main}
       dt_txt={item.dt_txt}
       min={item.main.min}
@@ -77,18 +59,20 @@ const UpcomingWeather = () => {
     />
   )
 
+  const { container, image, heading } = styles
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={container}>
       <ImageBackground
         source={require('../../assets/upcoming-bg.jpg')}
-        style={styles.image}
+        style={image}
       >
-      <Text style={styles.heading}>Upcoming Weather</Text>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item => item.dt_txt)}
-      />
+        <Text style={heading}>Upcoming Weather</Text>
+        <FlatList
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={(item => item.dt_txt)}
+        />
       </ImageBackground>
     </SafeAreaView>
   )
@@ -106,27 +90,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
     backgroundColor: 'royalBlue',
-
-  },
-  item: {
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    borderWidth: 3,
-    backgroundColor: 'pink'
-  },
-  temp: {
-    color: 'white',
-    fontSize: 10,
-    marginHorizontal: 2,
-  },
-  date: {
-    fontSize: 12,
-    color: 'white',
-    marginHorizontal: 5
   },
   image: {
     flex: 1,
