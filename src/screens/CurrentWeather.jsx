@@ -1,16 +1,20 @@
 import React from "react";
 import { View, Text, SafeAreaView, StatusBar, StyleSheet } from "react-native";
-
 import { Feather } from '@expo/vector-icons';
+
+
+import RowText from "../components/RowText";
 
 
 
 const CurrentWeather = () => {
-  return (
-    <SafeAreaView style={styles.wrCurrentWeatherer}>
+  const { CurrentWeatherer, container, temp, feels, highLowWrCurrentWeatherer, highLow, desc, message, bodyCurrentWeatherer } = styles;
 
-      <View style={styles.container}>
-      
+  return (
+    <SafeAreaView style={CurrentWeatherer}>
+
+      <View style={container}>
+
         <Feather
           name="sun"
           size={70}
@@ -18,20 +22,26 @@ const CurrentWeather = () => {
         />
 
         <Text>Current Weather</Text>
-        <Text style={styles.temp}>6</Text>
-        <Text style={styles.feels}>Feels like 5</Text>
+        <Text style={temp}>6</Text>
+        <Text style={feels}>Feels like 5</Text>
 
-        <View style={styles.highLowWrCurrentWeatherer}>
-          <Text style={styles.highLow}>High: 8</Text>
-          <Text style={styles.highLow}>Low: 6</Text>
-        </View>
+        <RowText
+          message1={`High: 8`}
+          message2={`Low: 6`}
+          containerStyles={highLowWrCurrentWeatherer}
+          message1Styles={highLow}
+          message2Styles={highLow}
+        />
 
       </View>
 
-      <View style={styles.bodyWrCurrentWeatherer}>
-        <Text style={styles.desc}>Its sunny</Text>
-        <Text style={styles.message}>Its perfect t-shirt weather</Text>
-      </View>
+      <RowText
+        message1={`Its sunny`}
+        message2={`Its perfect t-shirt weather`}
+        message1Styles={desc}
+        message2Styles={message}
+        containerStyles={bodyCurrentWeatherer}
+      />
 
     </SafeAreaView>
   )
@@ -39,9 +49,9 @@ const CurrentWeather = () => {
 
 
 const styles = StyleSheet.create({
-  wrCurrentWeatherer: {
+  CurrentWeatherer: {
     backgroundColor: 'pink',
-    marginTop: StatusBar.currentHeight,
+    // marginTop: StatusBar.currentHeight,
     flex: 1
   },
   container: {
@@ -63,8 +73,9 @@ const styles = StyleSheet.create({
   highLow: {
     color: 'black',
     fontSize: 20,
+    marginHorizontal: 10
   },
-  bodyWrCurrentWeatherer: {
+  bodyCurrentWeatherer: {
     justifyContent: "flex-end",
     alignContent: 'flex-start',
     paddingLeft: 25,
