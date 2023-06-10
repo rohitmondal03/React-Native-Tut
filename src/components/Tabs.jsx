@@ -5,18 +5,28 @@ import CurrentWeather from "../screens/CurrentWeather";
 import UpcomingWeather from "../screens/UpcomingWeather";
 import City from "../screens/City";
 
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 
-const Tab= createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
     return (
         <Tab.Navigator
             screenOptions={{
                 tabBarActiveTintColor: 'tomato',
-                tabBarInactiveTintColor: 'grey'
+                tabBarInactiveTintColor: 'grey',
+                tabBarStyle: {
+                    backgroundColor: 'lightblue',
+
+                },
+                headerStyle: {
+                    backgroundColor: 'lightblue',
+                },
+                headerTitleStyle: {
+                    color: 'red',
+                    fontSize: 25,
+                }
             }}
         >
             <Tab.Screen
@@ -33,7 +43,7 @@ const Tabs = () => {
                 }}
             />
             <Tab.Screen
-                name={'UpcomingWeather'}
+                name={'Upcoming Weather'}
                 component={UpcomingWeather}
                 options={{
                     tabBarIcon: ({ focused }) => (

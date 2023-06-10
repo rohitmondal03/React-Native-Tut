@@ -4,6 +4,7 @@ import { Feather } from '@expo/vector-icons';
 
 
 import RowText from "../components/RowText";
+import { weatherType } from "../utility/weatherType";
 
 
 
@@ -37,7 +38,7 @@ const CurrentWeather = () => {
 
       <RowText
         message1={`Its sunny`}
-        message2={`Its perfect t-shirt weather`}
+        message2={weatherType['Thunderstorm'].message}
         message1Styles={desc}
         message2Styles={message}
         containerStyles={bodyCurrentWeatherer}
