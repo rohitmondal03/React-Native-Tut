@@ -38,7 +38,7 @@ const CurrentWeather = () => {
 
       <RowText
         message1={`Its sunny`}
-        message2={weatherType['Thunderstorm'].message}
+        message2={weatherType['Drizzle'].message}
         message1Styles={desc}
         message2Styles={message}
         containerStyles={bodyCurrentWeatherer}
